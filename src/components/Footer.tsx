@@ -1,0 +1,92 @@
+import React from 'react';
+import { ChefHat, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+
+const Footer: React.FC = () => {
+  return (
+    <footer id="contact" className="bg-gray-900 text-white py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <div className="flex items-center space-x-2 mb-6">
+              <div className="bg-orange-500 p-2 rounded-full">
+                <ChefHat className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <span className="text-2xl font-bold">Early</span>
+                <span className="text-2xl font-bold text-orange-500">Bee</span>
+              </div>
+            </div>
+            <p className="text-gray-400 mb-6">
+              Empowering Nigerian food entrepreneurs to build sustainable and profitable businesses.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors">
+                <Twitter className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Program Info */}
+          <div>
+            <h3 className="text-lg font-bold mb-6">Program</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li><a href="#program" className="hover:text-white transition-colors">Program Overview</a></li>
+              <li><a href="#benefits" className="hover:text-white transition-colors">Benefits</a></li>
+              <li><a href="#success" className="hover:text-white transition-colors">Success Stories</a></li>
+              <li><a href="/enroll" className="hover:text-white transition-colors">Apply Now</a></li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="text-lg font-bold mb-6">Support</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li><a href="#" className="hover:text-white transition-colors">Sponsor the BSEP</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Partner with us</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Join our Community</a></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-bold mb-6">Reach Us</h3>
+            <div className="space-y-4 text-gray-400">
+              <div className="flex items-center space-x-3">
+                <MapPin className="h-5 w-5 text-orange-500" />
+                <span>Kosofe, Lagos State, Nigeria</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-orange-500" />
+                <span>+234 801 234 5678</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-orange-500" />
+                <span>hello@earlybee.ca</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm">
+            © 2024 EarlyBee Kosofe. All rights reserved.
+          </p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
