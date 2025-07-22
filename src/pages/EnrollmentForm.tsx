@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChefHat, Upload } from 'lucide-react';
+// @ts-ignore: No type definitions for react-google-recaptcha
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface FormData {
   // Personal Information
@@ -73,6 +75,7 @@ const EnrollmentForm: React.FC = () => {
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' | '' }>({ message: '', type: '' });
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   // Toast handler
   const showToast = (message: string, type: 'error' | 'success' = 'error') => {
@@ -176,16 +179,32 @@ const EnrollmentForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateStep()) {
-      fetch('https://script.google.com/macros/s/AKfycbwpEMq8Fne8TigOlnETv-2dZ0st8RoyqyZAYAcfMADYm5rVNUPmI2nAa4YozhsAU0VS/exec', {
+      const form = new FormData();
+      // No access_key needed for Formspark
+
+      Object.entries(formData).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((v) => form.append(key, v));
+        } else if (typeof value === 'boolean') {
+          form.append(key, value ? 'Yes' : 'No');
+        } else {
+          form.append(key, value as string);
+        }
+      });
+      if (recaptchaToken) {
+        form.append('g-recaptcha-response', recaptchaToken);
+      }
+
+      fetch('https://submit.formspark.io/3JaCaUBEs', {
         method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        body: form,
       })
-        .then(res => res.json())
-        .then(data => {
-          navigate('/thank-you');
+        .then(res => {
+          if (res.ok) {
+            navigate('/thank-you');
+          } else {
+            showToast('There was an error submitting your application. Please try again.', 'error');
+          }
         })
         .catch(err => {
           showToast('There was an error submitting your application. Please try again.', 'error');
@@ -720,36 +739,44 @@ const EnrollmentForm: React.FC = () => {
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
-            <button
-              type="button"
-              onClick={prevStep}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-                currentStep === 1
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-              disabled={currentStep === 1}
-            >
-              Previous
-            </button>
-            
-            {currentStep < 4 ? (
+          <div className="flex flex-col items-center mt-8 pt-6 border-t border-gray-200">
+            <div className="mb-4">
+              <ReCAPTCHA
+                sitekey="6LfKPosrAAAAABUlxZvOlaEujerTjwLD1FMa11FR" // TODO: Replace with your actual reCAPTCHA v2 site key
+                onChange={(token: string | null) => setRecaptchaToken(token)}
+              />
+            </div>
+            <div className="flex w-full justify-between">
               <button
                 type="button"
-                onClick={nextStep}
-                className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
+                onClick={prevStep}
+                className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+                  currentStep === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+                disabled={currentStep === 1}
               >
-                Next Step
+                Previous
               </button>
-            ) : (
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Submit Application
-              </button>
-            )}
+              {currentStep < 4 ? (
+                <button
+                  type="button"
+                  onClick={nextStep}
+                  className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
+                >
+                  Next Step
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  disabled={!recaptchaToken}
+                >
+                  Submit Application
+                </button>
+              )}
+            </div>
           </div>
         </form>
       </div>
