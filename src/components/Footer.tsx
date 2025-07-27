@@ -9,13 +9,7 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-orange-500 p-2 rounded-full">
-                <ChefHat className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <span className="text-2xl font-bold">Early</span>
-                <span className="text-2xl font-bold text-orange-500">Bee</span>
-              </div>
+              <img src="/src/assets/Earlybee-Logo-revamp-e1750946982329.png" alt="EarlyBee Logo" className="h-20 w-auto" />
             </div>
             <p className="text-gray-400 mb-6">
               Empowering Nigerian food entrepreneurs to build sustainable and profitable businesses.
@@ -59,15 +53,15 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-bold mb-6">Reach Us</h3>
             <div className="space-y-4 text-gray-400">
               <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-orange-500" />
+                <MapPin className="h-5 w-5 text-[#C9A14A]" />
                 <span>Kosofe, Lagos State, Nigeria</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-orange-500" />
+                <Phone className="h-5 w-5 text-[#C9A14A]" />
                 <span>+234 801 234 5678</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-orange-500" />
+                <Mail className="h-5 w-5 text-[#C9A14A]" />
                 <span>hello@earlybee.ca</span>
               </div>
             </div>

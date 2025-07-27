@@ -31,24 +31,24 @@ const LandingPage: React.FC = () => {
       <SuccessStories />
       
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-red-600">
+      <section className="py-20 bg-[#C9A14A]">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Grow Your Food Business?
             </h2>
-            <p className="text-xl text-orange-100 mb-8 leading-relaxed">
+            <p className="text-xl text-black mb-8 leading-relaxed">
               Join hundreds of successful food entrepreneurs who have grown their businesses with EarlyBee. 
               Applications are now open for our next cohort only for Lagos residents.
             </p>
             <Link 
               to="/enroll"
-              className="inline-flex items-center bg-white text-orange-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Apply Now - It's Free
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-            <p className="mt-4 text-orange-200 text-sm">
+            <p className="mt-4 text-black text-sm">
               Limited spots available • No application fees • Free busniess growth funding available
             </p>
           </div>

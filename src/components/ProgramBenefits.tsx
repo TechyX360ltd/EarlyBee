@@ -28,7 +28,7 @@ const ProgramBenefits: React.FC = () => {
             <div className="grid gap-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-[#C9A14A] mt-0.5 flex-shrink-0" />
                   <span className="text-gray-700">{benefit}</span>
                 </div>
               ))}
@@ -39,27 +39,27 @@ const ProgramBenefits: React.FC = () => {
             {/* Statistics Cards */}
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <Users className="h-8 w-8 text-orange-500 mb-4" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">100+</div>
-                <div className="text-gray-600">Member Network</div>
+                <Users className="h-8 w-8 text-[#C9A14A] mb-4" />
+                <div className="text-3xl font-bold text-gray-900 mb-2">2.3M+</div>
+                <div className="text-gray-600">Food Businesses in Nigeria</div>
               </div>
               
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 mt-8">
-                <TrendingUp className="h-8 w-8 text-green-500 mb-4" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">85%</div>
-                <div className="text-gray-600">Still Operating</div>
+                <TrendingUp className="h-8 w-8 text-[#C9A14A] mb-4" />
+                <div className="text-3xl font-bold text-gray-900 mb-2">67%</div>
+                <div className="text-gray-600">Growth Rate (2023)</div>
               </div>
               
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <Award className="h-8 w-8 text-blue-500 mb-4" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">₦1.2M</div>
-                <div className="text-gray-600">Avg. Annual Revenue</div>
+                <Award className="h-8 w-8 text-[#C9A14A] mb-4" />
+                <div className="text-3xl font-bold text-gray-900 mb-2">₦4.2T</div>
+                <div className="text-gray-600">Food Industry Value</div>
               </div>
               
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 mt-8">
-                <div className="text-2xl mb-4">🏆</div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">15</div>
-                <div className="text-gray-600">Industry Awards</div>
+                <div className="text-2xl mb-4">🍽️</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">45%</div>
+                <div className="text-gray-600">MSME Food Sector</div>
               </div>
             </div>
 

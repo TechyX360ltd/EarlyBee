@@ -41,7 +41,7 @@ const ProgramHighlights: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Why apply for the
-            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent"> BSE Prorgam?</span>
+            <span className="bg-[#C9A14A] bg-clip-text text-transparent"> BSE Prorgam?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             This program is specifically designed for Nigerian small scale food entrepreneurs who want to build 
@@ -56,8 +56,8 @@ const ProgramHighlights: React.FC = () => {
               className="group p-8 bg-gray-50 rounded-2xl hover:bg-gradient-to-br hover:from-orange-50 hover:to-yellow-50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="mb-6">
-                <div className="w-16 h-16 bg-orange-100 group-hover:bg-orange-200 rounded-2xl flex items-center justify-center transition-colors duration-300">
-                  <highlight.icon className="h-8 w-8 text-orange-600" />
+                <div className="w-16 h-16 bg-[#F5ECD6] group-hover:bg-[#e7c8a0] rounded-2xl flex items-center justify-center transition-colors duration-300">
+                  <highlight.icon className="h-8 w-8 text-[#C9A14A]" />
                 </div>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-orange-800 transition-colors duration-300">
@@ -71,27 +71,27 @@ const ProgramHighlights: React.FC = () => {
         </div>
 
         {/* Program Structure */}
-        <div className="mt-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-3xl p-8 md:p-12 text-white">
+        <div className="mt-20 bg-[#F5ECD6] rounded-3xl p-8 md:p-12 text-black">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">BSEP 3-Week Program Structure</h3>
-            <p className="text-orange-100 text-lg">What we've designed for you as a participant</p>
+            <p className="text-lg text-black mb-8">What we've designed for you as a participant</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-6xl font-bold text-orange-200 mb-4">01</div>
+              <div className="text-6xl md:text-7xl font-bold text-[#C9A14A] mb-4">01</div>
               <h4 className="text-xl font-bold mb-3">Foundation (Week 1)</h4>
-              <p className="text-orange-100">Food Busniess Structure and Planning.</p>
+              <p className="text-black">Food Busniess Structure and Planning.</p>
             </div>
             <div className="text-center">
-              <div className="text-6xl font-bold text-orange-200 mb-4">02</div>
+              <div className="text-6xl md:text-7xl font-bold text-[#C9A14A] mb-4">02</div>
               <h4 className="text-xl font-bold mb-3">Development (Week 2)</h4>
-              <p className="text-orange-100">Digital Marketing for small food ventures.</p>
+              <p className="text-black">Digital Marketing for small food ventures.</p>
             </div>
             <div className="text-center">
-              <div className="text-6xl font-bold text-orange-200 mb-4">03</div>
+              <div className="text-6xl md:text-7xl font-bold text-[#C9A14A] mb-4">03</div>
               <h4 className="text-xl font-bold mb-3">Launch (Weeks 3-4)</h4>
-              <p className="text-orange-100">Food business finance and compliance | Business Pitching</p>
+              <p className="text-black">Food business finance and compliance | Business Pitching</p>
             </div>
           </div>
         </div>

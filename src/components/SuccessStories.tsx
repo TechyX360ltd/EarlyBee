@@ -30,12 +30,12 @@ const stories = [
 
 const SuccessStories: React.FC = () => {
   return (
-    <section id="success" className="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
+    <section id="success" className="py-20 bg-[#F5ECD6]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Real Success Stories from 
-            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent"> Real Food Entrepreneurs</span>
+            <span className="bg-[#C9A14A] bg-clip-text text-transparent"> Real Food Entrepreneurs</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             See how EarlyBee graduates have transformed their food businesses and achieved remarkable success across Nigeria.
@@ -54,7 +54,7 @@ const SuccessStories: React.FC = () => {
 
               {/* Quote */}
               <div className="relative mb-6">
-                <Quote className="h-8 w-8 text-orange-200 absolute -top-2 -left-2" />
+                <Quote className="h-8 w-8 text-[#C9A14A] absolute -top-2 -left-2" />
                 <p className="text-gray-700 italic leading-relaxed pl-6">
                   "{story.story}"
                 </p>
@@ -62,12 +62,12 @@ const SuccessStories: React.FC = () => {
 
               {/* Profile */}
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center text-2xl">
+                <div className="w-16 h-16 bg-[#C9A14A] rounded-full flex items-center justify-center text-2xl">
                   {story.image}
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900">{story.name}</h4>
-                  <p className="text-orange-600 font-medium">{story.business}</p>
+                  <p className="text-[#C9A14A] font-medium">{story.business}</p>
                   <p className="text-sm text-gray-500">{story.location}</p>
                 </div>
               </div>
@@ -93,7 +93,7 @@ const SuccessStories: React.FC = () => {
             </p>
             <a 
               href="/enroll"
-              className="inline-flex bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              className="inline-flex bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
             >
               Start Your Journey Today
             </a>

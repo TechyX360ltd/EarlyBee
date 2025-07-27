@@ -180,7 +180,9 @@ const EnrollmentForm: React.FC = () => {
     e.preventDefault();
     if (validateStep()) {
       const form = new FormData();
-      // No access_key needed for Formspark
+      
+      // Generate application reference number
+      const applicationRef = `EB-BSEP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
 
       Object.entries(formData).forEach(([key, value]) => {
         if (Array.isArray(value)) {
@@ -191,19 +193,31 @@ const EnrollmentForm: React.FC = () => {
           form.append(key, value as string);
         }
       });
+      
+      // Add application reference number to form data
+      form.append('applicationReference', applicationRef);
+      
       if (recaptchaToken) {
         form.append('g-recaptcha-response', recaptchaToken);
       }
 
-      fetch('https://submit.formspark.io/3JaCaUBEs', {
+      fetch('https://script.google.com/macros/s/AKfycbwuH_tdLTB0YSh1R-fknaW_SI-8CphbXYjHXRvpkrdsPrjbmT5AshoNF-WfmyhTo6xQRg/exec', {
         method: 'POST',
         body: form,
       })
-        .then(res => {
-          if (res.ok) {
-            navigate('/thank-you');
-          } else {
-            showToast('There was an error submitting your application. Please try again.', 'error');
+        .then(res => res.text())
+        .then(data => {
+          try {
+            const result = JSON.parse(data);
+            if (result.result === 'success') {
+              // Pass the application reference to the thank you page
+              navigate('/thank-you', { state: { applicationRef } });
+            } else {
+              showToast('There was an error submitting your application. Please try again.', 'error');
+            }
+          } catch (error) {
+            // If response is not JSON, assume success (Google Apps Script sometimes returns plain text)
+            navigate('/thank-you', { state: { applicationRef } });
           }
         })
         .catch(err => {
@@ -240,20 +254,12 @@ const EnrollmentForm: React.FC = () => {
       {/* Header */}
       <div className="container mx-auto px-4 mb-8">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2 text-gray-600 hover:text-orange-500 transition-colors">
+          <img src="/src/assets/Earlybee-Logo-revamp-e1750946982329.png" alt="EarlyBee Logo" className="h-20 w-auto" />
+          
+          <Link to="/" className="flex items-center space-x-2 text-gray-600 hover:text-[#C9A14A] transition-colors">
             <ArrowLeft className="h-5 w-5" />
             <span>Back to Home</span>
           </Link>
-          
-          <div className="flex items-center space-x-2">
-            <div className="bg-orange-500 p-2 rounded-full">
-              <ChefHat className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <span className="text-xl font-bold text-gray-800">Early</span>
-              <span className="text-xl font-bold text-orange-500">Bee</span>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -269,7 +275,7 @@ const EnrollmentForm: React.FC = () => {
             {[1, 2, 3, 4].map((step) => (
               <div key={step} className="flex-1">
                 <div className={`h-3 rounded-full ${
-                  step <= currentStep ? 'bg-orange-500' : 'bg-gray-200'
+                  step <= currentStep ? 'bg-[#C9A14A]' : 'bg-gray-200'
                 } transition-colors duration-300`}></div>
                 <p className="text-sm text-gray-600 mt-2">{stepTitles[step - 1]}</p>
               </div>
@@ -742,7 +748,7 @@ const EnrollmentForm: React.FC = () => {
           <div className="flex flex-col items-center mt-8 pt-6 border-t border-gray-200">
             <div className="mb-4">
               <ReCAPTCHA
-                sitekey="6LfKPosrAAAAABUlxZvOlaEujerTjwLD1FMa11FR" // TODO: Replace with your actual reCAPTCHA v2 site key
+                sitekey="6Lfn_pArAAAAAF-tilVdnxUCPeEv4HS_80b2z2oK"
                 onChange={(token: string | null) => setRecaptchaToken(token)}
               />
             </div>
@@ -763,7 +769,7 @@ const EnrollmentForm: React.FC = () => {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
+                  className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-900 transition-colors"
                 >
                   Next Step
                 </button>
@@ -771,7 +777,6 @@ const EnrollmentForm: React.FC = () => {
                 <button
                   type="submit"
                   className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                  disabled={!recaptchaToken}
                 >
                   Submit Application
                 </button>
