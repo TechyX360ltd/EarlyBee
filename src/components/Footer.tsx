@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChefHat, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import logoImage from '../assets/Earlybee-Logo-revamp-e1750946982329.png';
 
 const Footer: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <img src="/src/assets/Earlybee-Logo-revamp-e1750946982329.png" alt="EarlyBee Logo" className="h-20 w-auto" />
+              <img src={logoImage} alt="EarlyBee Logo" className="h-20 w-auto" />
             </div>
             <p className="text-gray-400 mb-6">
               Empowering Nigerian food entrepreneurs to build sustainable and profitable businesses.

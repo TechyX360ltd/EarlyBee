@@ -7,7 +7,7 @@ import ThankYou from './pages/ThankYou';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/enroll" element={<EnrollmentForm />} />

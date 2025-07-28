@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChefHat, Upload } from 'lucide-react';
 // @ts-ignore: No type definitions for react-google-recaptcha
 import ReCAPTCHA from 'react-google-recaptcha';
+import logoImage from '../assets/Earlybee-Logo-revamp-e1750946982329.png';
 
 interface FormData {
   // Personal Information
@@ -242,7 +243,7 @@ const EnrollmentForm: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 py-8 overflow-x-hidden">
       {/* Toast Notification */}
       {toast.message && (
         <div className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 rounded-lg shadow-lg text-white text-center transition-all duration-300
@@ -254,7 +255,7 @@ const EnrollmentForm: React.FC = () => {
       {/* Header */}
       <div className="container mx-auto px-4 mb-8">
         <div className="flex items-center justify-between">
-          <img src="/src/assets/Earlybee-Logo-revamp-e1750946982329.png" alt="EarlyBee Logo" className="h-20 w-auto" />
+          <img src={logoImage} alt="EarlyBee Logo" className="h-20 w-auto" />
           
           <Link to="/" className="flex items-center space-x-2 text-gray-600 hover:text-[#C9A14A] transition-colors">
             <ArrowLeft className="h-5 w-5" />

@@ -7,7 +7,7 @@ const ThankYou: React.FC = () => {
   const applicationRef = location.state?.applicationRef || `EB-BSEP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 py-8 overflow-x-hidden">
       {/* Print-only content */}
       <div className="hidden print:block print:p-8">
         <div className="text-center">

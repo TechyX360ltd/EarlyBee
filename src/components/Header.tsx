@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChefHat, Menu, X } from 'lucide-react';
+import logoImage from '../assets/Earlybee-Logo-revamp-e1750946982329.png';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-6">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/src/assets/Earlybee-Logo-revamp-e1750946982329.png" alt="EarlyBee Logo" className="h-20 w-auto" />
+            <img src={logoImage} alt="EarlyBee Logo" className="h-20 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
