@@ -45,6 +45,7 @@ interface FormData {
 const EnrollmentForm: React.FC = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
+  const [applicationRef, setApplicationRef] = useState(`EB-BSEP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`);
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -77,6 +78,7 @@ const EnrollmentForm: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' | '' }>({ message: '', type: '' });
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Toast handler
   const showToast = (message: string, type: 'error' | 'success' = 'error') => {
@@ -177,53 +179,70 @@ const EnrollmentForm: React.FC = () => {
     handleInputChange(field, newArray);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateStep()) {
-      const form = new FormData();
-      
-      // Generate application reference number
-      const applicationRef = `EB-BSEP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+    
+    if (!recaptchaToken) {
+      showToast('Please complete the reCAPTCHA', 'error');
+      return;
+    }
 
-      Object.entries(formData).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-          value.forEach((v) => form.append(key, v));
-        } else if (typeof value === 'boolean') {
-          form.append(key, value ? 'Yes' : 'No');
-        } else {
-          form.append(key, value as string);
-        }
-      });
-      
-      // Add application reference number to form data
+    setIsSubmitting(true);
+
+    try {
+      const form = new FormData();
+      form.append('firstName', formData.firstName);
+      form.append('lastName', formData.lastName);
+      form.append('email', formData.email);
+      form.append('phone', formData.phone);
+      form.append('age', formData.age);
+      form.append('gender', formData.gender);
+      form.append('address', formData.address);
+      form.append('lga', formData.lga);
+      form.append('state', formData.state);
+      form.append('businessName', formData.businessName);
+      form.append('businessType', formData.businessType);
+      form.append('businessRegistered', formData.businessRegistered);
+      form.append('registrationNumber', formData.registrationNumber || '');
+      form.append('businessStage', formData.businessStage);
+      form.append('currentRevenue', formData.currentRevenue);
+      form.append('businessDescription', formData.businessDescription);
+      form.append('yearsInBusiness', formData.yearsInBusiness);
+      form.append('employeeCount', formData.employeeCount);
+      form.append('motivationLetter', formData.motivationLetter);
+      form.append('challenges', formData.challenges.join(', '));
+      form.append('goals', formData.goals.join(', '));
+      form.append('commitmentLevel', formData.commitmentLevel);
+      form.append('previousTraining', formData.previousTraining);
+      form.append('referralSource', formData.referralSource);
+      form.append('hasLaptop', formData.hasLaptop);
+      form.append('internetAccess', formData.internetAccess);
+      form.append('agreeToTerms', formData.agreeToTerms.toString());
       form.append('applicationReference', applicationRef);
+
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwuH_tdLTB0YSh1R-fknaW_SI-8CphbXYjHXRvpkrdsPrjbmT5AshoNF-WfmyhTo6xQRg/exec', {
+        method: 'POST',
+        body: form
+      });
+
+      const result = await response.json();
       
-      if (recaptchaToken) {
-        form.append('g-recaptcha-response', recaptchaToken);
+      if (result.result === 'error') {
+        if (result.error === 'duplicate_application') {
+          showToast('An application with this email already exists. Please contact us if you need to update your application.', 'error');
+        } else {
+          showToast('Submission failed. Please try again.', 'error');
+        }
+        return;
       }
 
-      fetch('https://script.google.com/macros/s/AKfycbwuH_tdLTB0YSh1R-fknaW_SI-8CphbXYjHXRvpkrdsPrjbmT5AshoNF-WfmyhTo6xQRg/exec', {
-        method: 'POST',
-        body: form,
-      })
-        .then(res => res.text())
-        .then(data => {
-          try {
-            const result = JSON.parse(data);
-            if (result.result === 'success') {
-              // Pass the application reference to the thank you page
-              navigate('/thank-you', { state: { applicationRef } });
-            } else {
-              showToast('There was an error submitting your application. Please try again.', 'error');
-            }
-          } catch (error) {
-            // If response is not JSON, assume success (Google Apps Script sometimes returns plain text)
-            navigate('/thank-you', { state: { applicationRef } });
-          }
-        })
-        .catch(err => {
-          showToast('There was an error submitting your application. Please try again.', 'error');
-        });
+      // Success - navigate to thank you page
+      navigate('/thank-you', { state: { applicationRef } });
+      
+    } catch (error) {
+      showToast('Submission failed. Please try again.', 'error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -269,7 +288,10 @@ const EnrollmentForm: React.FC = () => {
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Apply to EarlyBee BSEP</h1>
-            <span className="text-gray-500 text-sm sm:text-base">Step {currentStep} of 4</span>
+            <div className="flex flex-col items-end">
+              <span className="text-gray-500 text-sm sm:text-base">Step {currentStep} of 4</span>
+              <span className="text-xs text-gray-400 font-mono">Ref: {applicationRef}</span>
+            </div>
           </div>
           
           <div className="flex space-x-2">
@@ -289,6 +311,19 @@ const EnrollmentForm: React.FC = () => {
           {currentStep === 1 && (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Personal Information</h2>
+              
+              {/* Application Reference */}
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <label className="block text-gray-700 font-medium mb-2">Application Reference Number</label>
+                <input
+                  type="text"
+                  value={applicationRef}
+                  readOnly
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 font-mono font-bold cursor-not-allowed"
+                  style={{ backgroundColor: '#f8f9fa' }}
+                />
+                <p className="text-sm text-gray-600 mt-2">Please save this reference number for your records</p>
+              </div>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -777,9 +812,17 @@ const EnrollmentForm: React.FC = () => {
               ) : (
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 sm:px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                  disabled={isSubmitting}
+                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 sm:px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  Submit Application
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Submitting...
+                    </div>
+                  ) : (
+                    'Submit Application'
+                  )}
                 </button>
               )}
             </div>
