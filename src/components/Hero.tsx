@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Main headline */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               Join BSEP, Stand a chance
               <span className="bg-[#C9A14A] bg-clip-text text-transparent"> to win a Grant of ₦100K</span> to market your Business
             </h1>
@@ -54,11 +54,11 @@ const Hero: React.FC = () => {
             <div className="flex flex-wrap gap-6 text-sm text-gray-600">
               <div className="flex items-center">
                 <Users className="h-4 w-4 mr-2 text-[#C9A14A]" />
-                <span>500+ Entrepreneurs Trained</span>
+                <span>100+ Entrepreneurs Trained</span>
               </div>
               <div className="flex items-center">
                 <TrendingUp className="h-4 w-4 mr-2 text-[#C9A14A]" />
-                <span>₦2.5B+ Revenue Generated</span>
+                <span>Free Business registration for selected participants</span>
               </div>
               <div className="flex items-center">
                 <Award className="h-4 w-4 mr-2 text-[#C9A14A]" />

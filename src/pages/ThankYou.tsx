@@ -118,22 +118,22 @@ const ThankYou: React.FC = () => {
               {/* Social Proof */}
               <div className="mt-12 pt-8 border-t border-gray-200">
                 <p className="text-center text-gray-600 mb-4">Join our community while you wait:</p>
-                <div className="flex justify-center space-x-6">
-                  <a href="https://www.facebook.com/share/1VNeZzzeVY/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors">
+                <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto">
+                  <a href="https://www.facebook.com/share/1VNeZzzeVY/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors p-3 rounded-lg hover:bg-blue-50">
                     <Facebook className="h-5 w-5" />
                     <span className="text-sm">Facebook</span>
                   </a>
-                  <a href="https://www.instagram.com/earlybee_inc?igsh=MTZnYmhxYWJ1MmI2bg==" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-pink-600 hover:text-pink-700 transition-colors">
+                  <a href="https://www.instagram.com/earlybee_inc?igsh=MTZnYmhxYWJ1MmI2bg==" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2 text-pink-600 hover:text-pink-700 transition-colors p-3 rounded-lg hover:bg-pink-50">
                     <Instagram className="h-5 w-5" />
                     <span className="text-sm">Instagram</span>
                   </a>
-                  <a href="https://chat.whatsapp.com/IcoVlqyhNO80yza5qJ7Bgj?mode=ac_t" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors">
+                  <a href="https://chat.whatsapp.com/IcoVlqyhNO80yza5qJ7Bgj?mode=ac_t" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2 text-green-600 hover:text-green-700 transition-colors p-3 rounded-lg hover:bg-green-50">
                     <div className="h-5 w-5 bg-green-600 rounded flex items-center justify-center">
                       <span className="text-white text-xs font-bold">W</span>
                     </div>
                     <span className="text-sm">WhatsApp</span>
                   </a>
-                  <a href="https://www.linkedin.com/company/earlybeeinc/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-blue-700 hover:text-blue-800 transition-colors">
+                  <a href="https://www.linkedin.com/company/earlybeeinc/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2 text-blue-700 hover:text-blue-800 transition-colors p-3 rounded-lg hover:bg-blue-50">
                     <Linkedin className="h-5 w-5" />
                     <span className="text-sm">LinkedIn</span>
                   </a>

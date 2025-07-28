@@ -267,9 +267,9 @@ const EnrollmentForm: React.FC = () => {
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold text-gray-900">Apply to EarlyBee BSEP</h1>
-            <span className="text-gray-500">Step {currentStep} of 4</span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Apply to EarlyBee BSEP</h1>
+            <span className="text-gray-500 text-sm sm:text-base">Step {currentStep} of 4</span>
           </div>
           
           <div className="flex space-x-2">
@@ -278,13 +278,13 @@ const EnrollmentForm: React.FC = () => {
                 <div className={`h-3 rounded-full ${
                   step <= currentStep ? 'bg-[#C9A14A]' : 'bg-gray-200'
                 } transition-colors duration-300`}></div>
-                <p className="text-sm text-gray-600 mt-2">{stepTitles[step - 1]}</p>
+                <p className="text-xs sm:text-sm text-gray-600 mt-2">{stepTitles[step - 1]}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-8">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-4 sm:p-8">
           {/* Step 1: Personal Information */}
           {currentStep === 1 && (
             <div className="space-y-6">
@@ -747,17 +747,17 @@ const EnrollmentForm: React.FC = () => {
 
           {/* Navigation Buttons */}
           <div className="flex flex-col items-center mt-8 pt-6 border-t border-gray-200">
-            <div className="mb-4">
+            <div className="mb-4 w-full flex justify-center">
               <ReCAPTCHA
                 sitekey="6Lfn_pArAAAAAF-tilVdnxUCPeEv4HS_80b2z2oK"
                 onChange={(token: string | null) => setRecaptchaToken(token)}
               />
             </div>
-            <div className="flex w-full justify-between">
+            <div className="flex flex-col sm:flex-row w-full gap-4 sm:justify-between">
               <button
                 type="button"
                 onClick={prevStep}
-                className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+                className={`px-4 sm:px-6 py-3 rounded-lg font-medium transition-colors text-sm sm:text-base ${
                   currentStep === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -770,14 +770,14 @@ const EnrollmentForm: React.FC = () => {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-900 transition-colors"
+                  className="bg-black text-white px-4 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-900 transition-colors text-sm sm:text-base"
                 >
                   Next Step
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 sm:px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                 >
                   Submit Application
                 </button>
