@@ -67,14 +67,14 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative mt-8 lg:mt-0 overflow-x-hidden">
+          <div className="relative mt-8 lg:mt-0">
             {/* Main image placeholder replaced with a sample image */}
             <div className="relative bg-gradient-to-br from-[#C9A14A] to-[#F5ECD6] rounded-3xl p-4 sm:p-8 shadow-2xl max-w-xs mx-auto lg:max-w-none border-4" style={{ borderColor: '#C9A14A' }}>
-              <div className="aspect-square bg-white rounded-2xl flex items-center justify-center overflow-hidden">
+              <div className="w-full h-auto bg-white rounded-2xl flex items-center justify-center overflow-hidden">
                 <img
                   src={heroImage}
                   alt="Hero section image - EarlyBee Food Business"
-                  className="object-cover w-full h-full rounded-2xl border-4"
+                  className="object-cover w-full h-auto rounded-2xl border-4"
                   style={{ borderColor: '#C9A14A' }}
                 />
               </div>
