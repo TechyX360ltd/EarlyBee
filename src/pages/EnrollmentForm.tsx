@@ -191,6 +191,16 @@ const EnrollmentForm: React.FC = () => {
 
     try {
       const form = new FormData();
+      
+      // Add application reference FIRST
+      form.append('applicationReference', applicationRef);
+      
+      // DEBUG: Log what we're sending
+      console.log('=== SENDING FORM DATA ===');
+      console.log('Application Reference:', applicationRef);
+      console.log('Form Data:', formData);
+      
+      // Add all other form data
       form.append('firstName', formData.firstName);
       form.append('lastName', formData.lastName);
       form.append('email', formData.email);
@@ -218,7 +228,11 @@ const EnrollmentForm: React.FC = () => {
       form.append('hasLaptop', formData.hasLaptop);
       form.append('internetAccess', formData.internetAccess);
       form.append('agreeToTerms', formData.agreeToTerms.toString());
-      form.append('applicationReference', applicationRef);
+
+      console.log('FormData entries:');
+      for (let [key, value] of form.entries()) {
+        console.log(key + ':', value);
+      }
 
       const response = await fetch('https://script.google.com/macros/s/AKfycbwuH_tdLTB0YSh1R-fknaW_SI-8CphbXYjHXRvpkrdsPrjbmT5AshoNF-WfmyhTo6xQRg/exec', {
         method: 'POST',
@@ -226,6 +240,7 @@ const EnrollmentForm: React.FC = () => {
       });
 
       const result = await response.json();
+      console.log('Response from server:', result);
       
       if (result.result === 'error') {
         if (result.error === 'duplicate_application') {
@@ -240,6 +255,7 @@ const EnrollmentForm: React.FC = () => {
       navigate('/thank-you', { state: { applicationRef } });
       
     } catch (error) {
+      console.log('❌ FORM SUBMISSION ERROR:', error);
       showToast('Submission failed. Please try again.', 'error');
     } finally {
       setIsSubmitting(false);
