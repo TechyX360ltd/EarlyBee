@@ -234,7 +234,7 @@ const EnrollmentForm: React.FC = () => {
         console.log(key + ':', value);
       }
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwuH_tdLTB0YSh1R-fknaW_SI-8CphbXYjHXRvpkrdsPrjbmT5AshoNF-WfmyhTo6xQRg/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzwQj3OyWCnFagxA542M4qZll3jZwdzce5boD5f82jrtvdd1W4yXeiE91sMuC6mSYjNyg/exec', {
         method: 'POST',
         body: form
       });
