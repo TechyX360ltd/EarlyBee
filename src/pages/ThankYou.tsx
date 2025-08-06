@@ -45,7 +45,7 @@ const ThankYou: React.FC = () => {
               </h1>
               
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Thank you for applying to the EarlyBee Food Business Program. We're excited about your entrepreneurial journey and look forward to potentially welcoming you to our community of food business leaders.
+                Thank you for applying to the EarlyBee Business Sustainability Enterprise Program. We're excited about your entrepreneurial journey and look forward to potentially welcoming you to our community of food business leaders.
               </p>
 
               {/* Application Reference */}
@@ -86,13 +86,14 @@ const ThankYou: React.FC = () => {
               <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-8">
                 <h3 className="font-bold text-gray-900 mb-4">📧 Check Your Email</h3>
                 <p className="text-gray-700 mb-4">
-                  We've sent a confirmation email with all the details about next steps and what to expect. 
-                  If you don't see it in your inbox, please check your spam/junk folder.
+                  We will send you a confirmation email with all the details about next steps and what to expect within 24 hours. 
+                  If you don't see it in your inbox, please check your spam/junk folder. While you wait, follow us across our socia
+                  media platforms
                 </p>
                 <div className="bg-white p-4 rounded-lg border border-yellow-300">
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Phone className="h-4 w-4" />
-                    <span>Questions? Call us at <strong>+234 801 234 5678</strong> or email <strong>temi@earlybee.ca</strong></span>
+                    <span>Questions? Call us at <strong>+234 902 251 6693</strong> or email <strong>support@earlybee.ca</strong></span>
                   </div>
                 </div>
               </div>
