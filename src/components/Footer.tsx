@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-[#C9A14A]" />
-                <span>hello@earlybee.ca</span>
+                <span>support@earlybee.ca</span>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
         {/* Bottom */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 EarlyBee Kosofe. All rights reserved.
+            © 2024 EarlyBee Inc. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
