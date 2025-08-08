@@ -41,7 +41,7 @@ const ProgramHighlights: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Why apply for the
-            <span className="bg-[#C9A14A] bg-clip-text text-transparent"> BSE Prorgam?</span>
+            <span className="bg-[#C9A14A] bg-clip-text text-transparent"> BSE Program?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             This program is specifically designed for Nigerian small scale food entrepreneurs who want to build 
