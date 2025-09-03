@@ -26,15 +26,12 @@ const LandingPage: React.FC = () => {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
       
-      {/* Application Closed Banner */}
-      <div className="bg-red-600 text-white py-4 px-4 text-center">
+      {/* Simple Application Status Notice */}
+      <div className="bg-gray-100 border-b border-gray-200 py-3 px-4 text-center">
         <div className="container mx-auto">
-          <div className="flex items-center justify-center space-x-2">
-            <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-            <span className="text-lg font-bold">APPLICATIONS ARE NOW CLOSED</span>
-            <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-          </div>
-          <p className="text-sm mt-1 opacity-90">Thank you for your interest. Applications for this cohort are no longer being accepted.</p>
+          <span className="text-gray-600 text-sm">
+            📝 <strong>Applications are now closed</strong> for this cohort. Thank you for your interest.
+          </span>
         </div>
       </div>
       

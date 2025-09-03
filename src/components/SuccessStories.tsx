@@ -89,14 +89,14 @@ const SuccessStories: React.FC = () => {
               Ready to Write Your Success Story?
             </h3>
             <p className="text-gray-600 mb-6">
-              Join the next cohort of successful food entrepreneurs
+              Applications are currently closed for this cohort
             </p>
-            <a 
-              href="/enroll"
-              className="inline-flex bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            <button 
+              disabled
+              className="inline-flex bg-gray-400 text-gray-600 px-8 py-4 rounded-full font-semibold cursor-not-allowed opacity-75"
             >
-              Start Your Journey Today
-            </a>
+              Applications Closed
+            </button>
           </div>
         </div>
       </div>
