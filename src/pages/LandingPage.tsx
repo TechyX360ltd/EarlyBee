@@ -25,6 +25,19 @@ const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
+      
+      {/* Application Closed Banner */}
+      <div className="bg-red-600 text-white py-4 px-4 text-center">
+        <div className="container mx-auto">
+          <div className="flex items-center justify-center space-x-2">
+            <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+            <span className="text-lg font-bold">APPLICATIONS ARE NOW CLOSED</span>
+            <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+          </div>
+          <p className="text-sm mt-1 opacity-90">Thank you for your interest. Applications for this cohort are no longer being accepted.</p>
+        </div>
+      </div>
+      
       <Hero />
       <ProgramHighlights />
       <ProgramBenefits />
@@ -39,17 +52,17 @@ const LandingPage: React.FC = () => {
             </h2>
             <p className="text-xl text-black mb-8 leading-relaxed">
               Join hundreds of successful food entrepreneurs who have grown their businesses with EarlyBee. 
-              Applications are now open for our next cohort only for Lagos residents.
+              Applications are now closed for this cohort.
             </p>
-            <Link 
-              to="/enroll"
-              className="inline-flex items-center bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            <button 
+              disabled
+              className="inline-flex items-center bg-gray-400 text-gray-600 px-8 py-4 rounded-full font-semibold text-lg cursor-not-allowed opacity-75"
             >
-              Apply Now - It's Free
+              Applications Closed
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            </button>
             <p className="mt-4 text-black text-sm">
-              Limited spots available • No application fees • Free busniess growth funding available
+              Applications closed • No application fees • Free busniess growth funding available
             </p>
           </div>
         </div>

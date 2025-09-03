@@ -34,13 +34,13 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                to="/enroll"
-                className="inline-flex items-center justify-center bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              <button 
+                disabled
+                className="inline-flex items-center justify-center bg-gray-400 text-gray-600 px-8 py-4 rounded-full font-semibold text-lg cursor-not-allowed opacity-75"
               >
-                Apply Now - It's Free
+                Application Closed
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              </button>
               <Link 
                 to="#program"
                 className="inline-flex items-center justify-center border-2 border-black text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-black hover:text-white transition-all duration-300"

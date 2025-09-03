@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
               <li><a href="#program" className="hover:text-white transition-colors">Program Overview</a></li>
               <li><a href="#benefits" className="hover:text-white transition-colors">Benefits</a></li>
               <li><a href="#success" className="hover:text-white transition-colors">Success Stories</a></li>
-              <li><a href="/enroll" className="hover:text-white transition-colors">Apply Now</a></li>
+              <li className="text-gray-500 cursor-not-allowed">Application Closed</li>
             </ul>
           </div>
 

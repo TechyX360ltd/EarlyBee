@@ -23,13 +23,13 @@ const Header: React.FC = () => {
             <a href="#contact" className={`text-lg text-gray-700 transition-colors duration-200 underline-offset-8 decoration-2 ${location.hash === '#contact' ? 'text-[#C9A14A] underline font-semibold' : 'hover:text-[#C9A14A] hover:underline'}`}>Contact</a>
           </nav>
 
-          {/* Desktop CTA */}
-          <Link 
-            to="/enroll"
-            className="hidden md:inline-flex bg-black text-white px-6 py-2 rounded-full hover:bg-gray-900 transition-colors font-medium"
+          {/* Desktop CTA - Disabled */}
+          <button 
+            disabled
+            className="hidden md:inline-flex bg-gray-400 text-gray-600 px-6 py-2 rounded-full cursor-not-allowed font-medium opacity-75"
           >
-            Apply Now
-          </Link>
+            Application Closed
+          </button>
 
           {/* Mobile Menu Button */}
           <button
@@ -49,13 +49,12 @@ const Header: React.FC = () => {
               <a href="#benefits" className="text-gray-700 hover:text-[#C9A14A] transition-colors" onClick={() => setIsMenuOpen(false)}>Benefits</a>
               <a href="#success" className="text-gray-700 hover:text-[#C9A14A] transition-colors" onClick={() => setIsMenuOpen(false)}>Success Stories</a>
               <a href="#contact" className="text-gray-700 hover:text-[#C9A14A] transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</a>
-              <Link 
-                to="/enroll"
-                className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-900 transition-colors text-center"
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                disabled
+                className="bg-gray-400 text-gray-600 px-6 py-2 rounded-full cursor-not-allowed text-center opacity-75"
               >
-                Apply Now
-              </Link>
+                Application Closed
+              </button>
             </nav>
           </div>
         )}
